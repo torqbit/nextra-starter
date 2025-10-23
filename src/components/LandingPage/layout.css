@@ -1,0 +1,167 @@
+@import "tailwindcss/preflight";
+@tailwind utilities;
+
+.landing-page body {
+  background-color: var(--bg-secondary);
+  color: var(--font-secondary);
+}
+.landing-page button {
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+/* .navbar {
+  height: 60px;
+  background-color: var(--bg-primary); 
+  border-bottom: 1px solid var(--border-color); 
+  box-shadow: none;
+} */
+
+.landing-page .primary-button {
+  font-weight: 600;
+  background-color: var(--brand-color);
+  color: #fff;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+.landing-page .primary-button:hover {
+  background-color: var(--bg-primary);
+  color: var(--brand-color);
+  border: 1px solid var(--brand-color);
+}
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #5b63d3;
+  --ifm-color-primary-dark: #5b63d3;
+  --ifm-color-primary-darker: #277148;
+  --ifm-color-primary-darkest: #205d3b;
+  --ifm-color-primary-light: #33925d;
+  --ifm-color-primary-lighter: #359962;
+  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-code-font-size: 95%;
+  --bg-selected-menu: #eeeef1;
+
+  --border-color: #d9d9d9;
+  --bg-secondary: #f9f9f9;
+  --bg-primary: #fff;
+  --font-secondary: #5c5363;
+  --brand-color: #5b63d3;
+
+  --font-primary: #000;
+
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme="dark"] {
+  --bg-primary: #2c2c2c;
+  --bg-secondary: #242424;
+  --bg-selected-menu: #131313;
+  --font-primary: #fff;
+  --font-secondary: #b9b9b9;
+  --ifm-color-primary: #5b63d3;
+  --ifm-color-primary-dark: #5b63d3;
+  --ifm-color-primary-darker: #1fa588;
+  --ifm-color-primary-darkest: #1a8870;
+  --ifm-color-primary-light: #29d5b0;
+  --border-color: #454545;
+  --brand-color: #5b63d3;
+
+  --ifm-color-primary-lighter: #32d8b4;
+  --ifm-color-primary-lightest: #4fddbf;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+.landing-page,
+.landing-page body {
+  scroll-behavior: smooth;
+  background-color: var(--bg-secondary);
+  font-size: 14px;
+}
+
+h1 {
+  font-size: 2.8rem;
+}
+
+h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+}
+
+h3 {
+  font-size: 1.6rem;
+}
+
+h4 {
+  font-size: 1.2rem;
+}
+
+h5 {
+  font-size: 1rem;
+}
+h6 {
+  font-size: 0.8rem;
+}
+
+p {
+  font-size: 1rem;
+  color: var(--font-secondary);
+  line-height: 1.5;
+  font-family: var(--font-geist-sans);
+}
+
+.landing-page h1,
+h2,
+h3,
+h4 {
+  color: var(--font-primary);
+}
+
+.landing-page h5,
+h6 {
+  color: var(--font-secondary);
+}
+.landing-page a {
+  text-decoration: none;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+.sub-heading {
+  font-size: 0.9rem;
+  color: var(--font-hint);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  /* background: var(--btn-primary); */
+  background: var(--bg-scroll-bar);
+
+  border-radius: 30px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--font-secondary);
+}
+
+@media only screen and (max-width: 435px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+  h4 {
+    font-size: 1.3rem;
+  }
+}

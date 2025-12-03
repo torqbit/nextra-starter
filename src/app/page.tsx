@@ -15,15 +15,15 @@ export default function Home() {
   return (
     <LandingPageLayout>
       <FlickeringGrid
-        className="absolute inset-0 z-0 w-[80vw] mx-auto my-0  h-screen mask-[radial-gradient(80vw_circle_at_center,white,transparent)]"
+        className='absolute inset-0 z-0 w-[80vw] mx-auto my-0  h-screen mask-[radial-gradient(80vw_circle_at_center,white,transparent)]'
         squareSize={4}
         gridGap={6}
-        color="var(--bg-primary)"
+        color='var(--bg-primary)'
         maxOpacity={0.5}
         flickerChance={0.1}
       />
       <Hero
-        extraContent={<img src="https://placehold.co/600x300" alt="" />}
+        extraContent={<img src='img/doc-bg.png' alt='' />}
         buttonInfo={{
           text: "Get Started",
           link: "/",
@@ -36,7 +36,7 @@ export default function Home() {
           "Create powerful AI agent workflows with just a few lines of code, enabling complex task automation and decision-making processes."
         }
         title={"AI Agent SDK"}
-        extraDescription="Available for all major programming languages"
+        extraDescription='Available for all major programming languages'
       />
       <Companies items={logoArray} />
       <Features

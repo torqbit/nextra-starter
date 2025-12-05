@@ -148,7 +148,7 @@
 }
 
 .landing-page body {
-  background-color: var(--bg-secondary);
+  /* background-color: var(--bg-secondary); */
   color: var(--font-secondary);
 }
 .landing-page button {
@@ -181,7 +181,8 @@
 
 body {
   scroll-behavior: smooth;
-  background-color: var(--bg-secondary);
+  /* background-color: var(--bg-secondary); */
+  background-color: var(--x-color-nextra-bg);
   font-size: 14px;
 }
 

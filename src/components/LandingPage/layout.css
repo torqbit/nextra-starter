@@ -2,7 +2,7 @@
 @tailwind utilities;
 
 .landing-page body {
-  background-color: var(--bg-secondary);
+  /* background-color: var(--bg-secondary); */
   color: var(--font-secondary);
 }
 .landing-page button {
@@ -76,7 +76,7 @@
 .landing-page,
 .landing-page body {
   scroll-behavior: smooth;
-  background-color: var(--bg-secondary);
+  /* background-color: var(--bg-secondary); */
   font-size: 14px;
 }
 

@@ -7,6 +7,7 @@ const withNextra = nextra({
 
 // Export the final Next.js config with Nextra included
 export default withNextra({
+  contentDirBasePath: "/docs",
   turbopack: {
     resolveAlias: {
       "next-mdx-import-source-file": "./mdx-components.js",
@@ -14,13 +15,7 @@ export default withNextra({
   },
   images: {
     unoptimized: true,
-    domains: [
-      "torqbit-dev.b-cdn.net",
-      "lh3.googleusercontent.com",
-      "iframe.mediadelivery.net",
-      "torqbit.b-cdn.net",
-      "cdn.torqbit.com",
-    ],
+    domains: ["torqbit-dev.b-cdn.net", "lh3.googleusercontent.com", "iframe.mediadelivery.net", "torqbit.b-cdn.net", "cdn.torqbit.com"],
   },
   // ... Add regular Next.js options here
 });

@@ -76,8 +76,8 @@ const Pricing: React.FC = () => {
         dark: "text-white",
       },
       buttonClasses: {
-        light: "dark:bg-dark/100  bg-dark/100 dark:text-white text-white border-neutral-200 hover:bg-black-100",
-        dark: "dark:bg-dark/100 dark:text-white border-white/10 hover:bg-dark/90",
+        light: "bg-black/100 hover:bg-black/80 hover:text-white text-white",
+        dark: "bg-black/100 text-white hover:text-white hover:bg-black/90",
       },
     },
     {

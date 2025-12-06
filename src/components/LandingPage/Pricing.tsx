@@ -46,6 +46,8 @@ const Pricing: React.FC = () => {
   const { theme } = useTheme();
   const isDark = theme === "dark";
 
+  console.log(`theme: ${theme} and ${isDark}`);
+
   const plans: PricingPlan[] = [
     {
       name: "Hobby",
@@ -74,8 +76,8 @@ const Pricing: React.FC = () => {
         dark: "text-white",
       },
       buttonClasses: {
-        light: "bg-white text-black border-neutral-200 hover:bg-black-100",
-        dark: "bg-white text-white border-white/10 hover:bg-dark/90",
+        light: "dark:bg-dark/100  bg-dark/100 dark:text-white text-white border-neutral-200 hover:bg-black-100",
+        dark: "dark:bg-dark/100 dark:text-white border-white/10 hover:bg-dark/90",
       },
     },
     {
@@ -178,9 +180,6 @@ const Pricing: React.FC = () => {
     },
   ];
 
-  const dividerColor = isDark ? "border-white/10" : "border-neutral-200";
-  const containerBackground = isDark ? "bg-[#050505]" : "bg-neutral-50";
-
   return (
     <PageSection name='Pricing' description='Simple pricing for everyone.'>
       <div className='mt-12 space-y-10'>
@@ -222,9 +221,12 @@ const Pricing: React.FC = () => {
         <div
           className={cn(
             "mx-auto w-full overflow-hidden border-t",
-            containerBackground,
-            dividerColor,
-            isDark ? "shadow-[0_0_0_1px_rgba(255,255,255,0.04)]" : "shadow-lg"
+            "dark:bg-[#050505]",
+            "bg-neutral-50",
+            "dark:border-white/10",
+            "border-neutral-200",
+            "dark:shadow-[0_0_0_1px_rgba(255,255,255,0.04)]",
+            "shadow-lg"
           )}>
           <div className='grid grid-cols-1 md:grid-cols-4'>
             {plans.map((plan, index) => {
@@ -238,10 +240,12 @@ const Pricing: React.FC = () => {
                   key={plan.name}
                   className={cn(
                     "flex h-full flex-col gap-8 p-8 md:p-10 transition-colors duration-300",
-                    isDark ? "bg-[#0d0d0f]" : "bg-white",
+                    "dark:bg-[#0d0d0f]",
+                    "bg-white",
                     index !== plans.length - 1 && "border-b md:border-b-0",
                     index > 0 && "md:border-l",
-                    dividerColor
+                    "dark:border-white/10",
+                    "border-neutral-200"
                   )}>
                   <div className='space-y-6'>
                     <div className='space-y-2'>

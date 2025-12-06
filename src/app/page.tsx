@@ -3,9 +3,9 @@
 import Companies from "@/components/LandingPage/Companies";
 import Features from "@/components/LandingPage/Features";
 import Hero from "@/components/LandingPage/Hero";
+import Pricing from "@/components/LandingPage/Pricing";
 import LandingPageLayout from "@/components/Layout/LandingPageLayout";
 import SvgIcons from "@/components/SvgIcons";
-import { FlickeringGrid } from "@/components/ui/flickering-grid";
 
 export default function Home() {
   const logoArray = {
@@ -14,14 +14,6 @@ export default function Home() {
   };
   return (
     <LandingPageLayout>
-      <FlickeringGrid
-        className='absolute inset-0 z-0 w-[80vw] mx-auto my-0  h-screen mask-[radial-gradient(80vw_circle_at_center,white,transparent)]'
-        squareSize={4}
-        gridGap={6}
-        color='var(--bg-primary)'
-        maxOpacity={0.5}
-        flickerChance={0.1}
-      />
       <Hero
         extraContent={<img src='img/doc-bg.png' alt='' />}
         buttonInfo={{
@@ -79,6 +71,7 @@ export default function Home() {
           },
         ]}
       />
+      <Pricing />
     </LandingPageLayout>
   );
 }

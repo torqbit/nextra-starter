@@ -1,7 +1,6 @@
 import { FC } from "react";
 import * as React from "react";
 import Autoplay from "embla-carousel-autoplay";
-
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 
 const Companies: FC<{
@@ -10,51 +9,68 @@ const Companies: FC<{
     secondGroup: React.JSX.Element[];
   };
 }> = ({ items }) => {
-  const plugin = React.useRef(Autoplay({ delay: 4000, stopOnInteraction: true }));
+  const plugin = React.useRef(
+    Autoplay({
+      delay: 4000,
+      stopOnInteraction: false,
+      playOnInit: true,
+    })
+  );
+
+  const allItems = [...items.firstGroup, ...items.secondGroup];
+  const totalItems = allItems.length;
 
   return (
-    <Carousel
-      opts={{
-        loop: true, // 👈 allows continuous forward motion
-        align: "start",
-        direction: "ltr", // 👈 ensures left-to-right sliding
-        containScroll: "trimSnaps",
-      }}
-      plugins={[plugin.current]}
-      className="w-[80vw]   border-(--border-color) bg-(--bg-secondary) border-l border-r  border-b "
-    >
-      <CarouselContent className="">
-        <CarouselItem key={1} className=" max-w-[80vw]    flex items-center justify-around  ">
-          {items.firstGroup.map((item, index) => {
+    <div className='w-full overflow-hidden'>
+      <Carousel
+        opts={{
+          loop: true,
+          align: "start",
+          direction: "ltr",
+          containScroll: "trimSnaps",
+          slidesToScroll: 1,
+          inViewThreshold: 0.5,
+        }}
+        plugins={[plugin.current]}
+        className='w-full relative nextra-border border-l border-r border-b'
+        onMouseEnter={() => plugin.current.stop()}
+        onMouseLeave={() => plugin.current.play()}>
+        <CarouselContent className='flex'>
+          {allItems.map((item, index) => {
+            const isLastItem = index === totalItems - 1;
             return (
-              <div
-                className={` w-full  border-(--border-color) ${
-                  index == items.firstGroup.length - 1 ? "border-r" : " border-r"
-                }  cursor-pointer flex items-center justify-center`}
+              <CarouselItem
                 key={index}
-              >
-                <i className="leading-0 text-[120px] text-(--font-secondary) hover:text-(--font-primary)">{item}</i>
-              </div>
+                className={`relative 
+                  basis-1/2 
+                  sm:basis-1/3 
+                  md:basis-1/4 
+                  lg:basis-1/6 
+                  p-0 
+                  border-r nextra-border
+                `}>
+                <div className='flex items-center justify-center p-4 sm:p-6 h-full w-full'>
+                  <div className='relative w-full h-20 sm:h-24 md:h-28 lg:h-32 flex items-center justify-center'>
+                    <i
+                      className={`
+                        w-full h-full 
+                        flex items-center justify-center 
+                        text-[60px] sm:text-[80px] lg:text-[100px] xl:text-[120px]
+                        text-(--font-secondary) hover:text-(--font-primary)
+                        transition-all duration-300 transform hover:scale-105
+                        p-2
+                      `}
+                      aria-hidden='true'>
+                      {item}
+                    </i>
+                  </div>
+                </div>
+              </CarouselItem>
             );
           })}
-        </CarouselItem>
-        <CarouselItem key={2} className="p-[0_0px_0_0px] max-w-[80vw]   flex items-center justify-around  ">
-          {items.secondGroup.map((item, index) => {
-            return (
-              <div
-                className={`w-full cursor-pointer
-                     border-(--border-color)  ${
-                       index == items.secondGroup.length - 1 ? "border-r" : "border-r"
-                     } flex items-center justify-center`}
-                key={index}
-              >
-                <i className="leading-0 text-[120px] text-(--font-secondary) hover:text-(--font-primary)">{item}</i>
-              </div>
-            );
-          })}
-        </CarouselItem>
-      </CarouselContent>
-    </Carousel>
+        </CarouselContent>
+      </Carousel>
+    </div>
   );
 };
 

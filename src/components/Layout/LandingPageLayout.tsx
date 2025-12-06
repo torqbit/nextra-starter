@@ -10,7 +10,7 @@ const LandingPageLayout: FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <>
       <section className='relative w-full'>
-        <Navbar />
+        {/* <Navbar /> */}
         <div
           style={{
             maxWidth: "80vw",

@@ -42,7 +42,7 @@
   --ifm-code-font-size: 95%;
   --bg-selected-menu: #eeeef1;
 
-  --border-color: #d9d9d9;
+  --border-color: var(--x-color-neutral-800);
   --bg-secondary: #f9f9f9;
   --bg-primary: #fff;
   --font-secondary: #5c5363;
@@ -65,7 +65,7 @@
   --ifm-color-primary-darker: #1fa588;
   --ifm-color-primary-darkest: #1a8870;
   --ifm-color-primary-light: #29d5b0;
-  --border-color: #454545;
+  --border-color: var(--x-color-neutral-800);
   --brand-color: #5b63d3;
 
   --ifm-color-primary-lighter: #32d8b4;

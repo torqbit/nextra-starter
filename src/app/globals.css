@@ -156,12 +156,9 @@
   border: 1px solid transparent;
 }
 
-/* .navbar {
-  height: 60px;
-  background-color: var(--bg-primary); 
-  border-bottom: 1px solid var(--border-color); 
-  box-shadow: none;
-} */
+button {
+  cursor: pointer;
+}
 
 .primary-button {
   font-weight: 600;

@@ -16,7 +16,6 @@ const footer = (
       <Image src={"https://cdn.torqbit.com/static/brand/brand-icon.png"} alt='logo' className='h-auto w-[40px]' height={40} width={40} />
       <h4 style={{ margin: 0, padding: 0, lineHeight: 1.9 }}>Torqbit</h4>
     </div>
-    .
   </Footer>
 );
 

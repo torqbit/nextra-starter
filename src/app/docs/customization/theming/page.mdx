@@ -1,0 +1,356 @@
+---
+title: Theming
+---
+
+# Theming Guide
+
+Customize the visual appearance of your Torqbit template using our theming system.
+
+## Theme System Overview
+
+The template uses a combination of Tailwind CSS and CSS variables for theming, with built-in support for light and dark modes.
+
+## Color System
+
+### Primary Colors
+
+Update your primary color scheme in `tailwind.config.js`:
+
+```javascript
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          50: "#f0f9ff",
+          100: "#e0f2fe",
+          200: "#bae6fd",
+          300: "#7dd3fc",
+          400: "#38bdf8",
+          500: "#0ea5e9", // Your primary color
+          600: "#0284c7",
+          700: "#0369a1",
+          800: "#075985",
+          900: "#0c4a6e",
+        },
+      },
+    },
+  },
+};
+```
+
+### Customizing Dark Mode
+
+1. Enable dark mode in `tailwind.config.js`:
+
+```javascript
+module.exports = {
+  darkMode: "class",
+  // ... rest of the config
+};
+```
+
+2. Add custom dark mode styles in `globals.css`:
+
+```css
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+  }
+}
+```
+
+## Typography
+
+### Font Family
+
+1. Import your custom fonts in `app/layout.tsx`:
+
+```typescript
+import { Inter, Space_Grotesk } from "next/font/google";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
+  display: "swap",
+});
+```
+
+2. Configure the fonts in `tailwind.config.js`:
+
+```javascript
+module.exports = {
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ["var(--font-inter)"],
+        heading: ["var(--font-space-grotesk)"],
+      },
+    },
+  },
+};
+```
+
+### Typography Scale
+
+Customize the typography scale in `tailwind.config.js`:
+
+```javascript
+module.exports = {
+  theme: {
+    extend: {
+      fontSize: {
+        "2xs": "0.625rem",
+        "3xl": "1.75rem",
+        "4xl": "2.25rem",
+        "5xl": "3rem",
+        "6xl": "3.75rem",
+        "7xl": "4.5rem",
+        "8xl": "6rem",
+        "9xl": "8rem",
+      },
+      lineHeight: {
+        tighter: "1.1",
+      },
+    },
+  },
+};
+```
+
+## Component Styling
+
+### Button Styles
+
+Customize button styles in your global CSS or component styles:
+
+```css
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+  }
+
+  .btn-outline {
+    @apply border border-input hover:bg-accent hover:text-accent-foreground;
+  }
+
+  .btn-ghost {
+    @apply hover:bg-accent hover:text-accent-foreground;
+  }
+
+  .btn-link {
+    @apply underline-offset-4 hover:underline text-primary;
+  }
+}
+```
+
+### Card Styles
+
+```css
+@layer components {
+  .card {
+    @apply rounded-lg border bg-card text-card-foreground shadow-sm;
+  }
+
+  .card-header {
+    @apply flex flex-col space-y-1.5 p-6;
+  }
+
+  .card-title {
+    @apply text-2xl font-semibold leading-none tracking-tight;
+  }
+
+  .card-description {
+    @apply text-sm text-muted-foreground;
+  }
+
+  .card-content {
+    @apply p-6 pt-0;
+  }
+
+  .card-footer {
+    @apply flex items-center p-6 pt-0;
+  }
+}
+```
+
+## Dark Mode Toggle
+
+Add a dark mode toggle component:
+
+```tsx
+"use client";
+
+import { Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
+import { Button } from "@/components/ui/button";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+
+export function ThemeToggle() {
+  const { setTheme } = useTheme();
+
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant='outline' size='icon'>
+          <Sun className='h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0' />
+          <Moon className='absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100' />
+          <span className='sr-only'>Toggle theme</span>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align='end'>
+        <DropdownMenuItem onClick={() => setTheme("light")}>Light</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("dark")}>Dark</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("system")}>System</DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
+```
+
+## Responsive Design
+
+### Breakpoints
+
+The template uses Tailwind's default breakpoints:
+
+- `sm`: 640px
+- `md`: 768px
+- `lg`: 1024px
+- `xl`: 1280px
+- `2xl`: 1536px
+
+### Container Queries
+
+Use container queries for component-level responsive design:
+
+```css
+@layer utilities {
+  .container {
+    container-type: inline-size;
+  }
+
+  @container (min-width: 640px) {
+    .card {
+      /* Styles for cards in containers wider than 640px */
+    }
+  }
+}
+```
+
+## Custom Animations
+
+Add custom animations in your CSS:
+
+```css
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-float-delay {
+    animation: float 6s ease-in-out 1s infinite;
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+}
+```
+
+## Theme Provider
+
+The template uses `next-themes` for theme management. Wrap your application with the `ThemeProvider` in your root layout:
+
+```tsx
+import { ThemeProvider } from "next-themes";
+
+export function Providers({ children }: { children: React.ReactNode }) {
+  return (
+    <ThemeProvider attribute='class' defaultTheme='system' enableSystem disableTransitionOnChange>
+      {children}
+    </ThemeProvider>
+  );
+}
+```
+
+## Customizing Component Library
+
+If you're using a component library like Shadcn/ui, you can customize the theme by modifying the component styles in the `components/ui` directory. Each component has its own CSS variables that you can override in your global CSS.

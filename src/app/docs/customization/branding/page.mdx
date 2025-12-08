@@ -1,0 +1,172 @@
+---
+title: Branding
+---
+
+# Branding Customization
+
+Customize your Torqbit template with your brand's identity, including logos, colors, and typography.
+
+## Logo and Favicon
+
+### Adding Your Logo
+
+1. Place your logo in the `public/` directory
+2. Update the logo path in `src/lib/props.ts`:
+
+```typescript
+export const brand = {
+  logo: "/your-logo.png", // Update this path
+  logoDark: "/your-logo-dark.png", // Optional dark mode logo
+  // ... other brand settings
+};
+```
+
+### Updating the Favicon
+
+1. Replace the following files in `public/`:
+   - `favicon.ico`
+   - `favicon-16x16.png`
+   - `favicon-32x32.png`
+   - `apple-touch-icon.png`
+   - `safari-pinned-tab.svg`
+
+## Color Scheme
+
+### Primary Colors
+
+Update your primary colors in `tailwind.config.js`:
+
+```javascript
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          DEFAULT: "#2563eb", // Your primary color
+          dark: "#1d4ed8", // Darker shade for hover states
+          light: "#3b82f6", // Lighter shade
+          foreground: "#ffffff", // Text color on primary
+        },
+      },
+    },
+  },
+};
+```
+
+### Dark Mode Colors
+
+Customize dark mode colors in `tailwind.config.js`:
+
+```javascript
+module.exports = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        dark: {
+          background: "#0f172a",
+          foreground: "#f8fafc",
+          card: "#1e293b",
+          "card-foreground": "#f8fafc",
+        },
+      },
+    },
+  },
+};
+```
+
+## Typography
+
+### Font Family
+
+1. Import your custom fonts in `app/layout.tsx`:
+
+```typescript
+import { Inter, Roboto_Mono } from "next/font/google";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const robotoMono = Roboto_Mono({
+  subsets: ["latin"],
+  variable: "--font-roboto-mono",
+  display: "swap",
+});
+```
+
+2. Update the font configuration in `tailwind.config.js`:
+
+```javascript
+module.exports = {
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ["var(--font-inter)"],
+        mono: ["var(--font-roboto-mono)"],
+      },
+    },
+  },
+};
+```
+
+## Social Media & SEO
+
+### Social Media Links
+
+Update social media links in `src/lib/props.ts`:
+
+```typescript
+export const socialLinks = {
+  twitter: "https://twitter.com/yourhandle",
+  github: "https://github.com/yourusername",
+  linkedin: "https://linkedin.com/company/yourcompany",
+  discord: "https://discord.gg/yourinvite",
+};
+```
+
+### SEO Metadata
+
+Update default SEO settings in `src/app/layout.tsx`:
+
+```typescript
+export const metadata: Metadata = {
+  title: {
+    default: "Your Brand Name",
+    template: "%s | Your Brand Name",
+  },
+  description: "Your brand description for SEO",
+  keywords: ["your", "keywords", "here"],
+  authors: [{ name: "Your Name" }],
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "white" },
+    { media: "(prefers-color-scheme: dark)", color: "black" },
+  ],
+};
+```
+
+## Custom CSS
+
+For custom styles, create a `globals.css` file in your styles directory and import it in your root layout:
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    /* Add your custom CSS variables here */
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    /* Dark mode variables */
+  }
+}
+```

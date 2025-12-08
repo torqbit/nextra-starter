@@ -1,0 +1,95 @@
+---
+title: Configuration
+---
+
+# Configuration Guide
+
+Learn how to configure your Torqbit template with custom settings and environment variables.
+
+## Environment Variables
+
+Create a `.env.local` file in your project root with the following variables:
+
+```env
+# Required
+NEXT_PUBLIC_TORQBIT_API_KEY=your_api_key_here
+
+# Optional
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+```
+
+## App Configuration
+
+### Branding
+
+Update `src/lib/props.ts` to customize your brand:
+
+```typescript
+export const brand = {
+  name: "Your Brand",
+  logo: "/logo.png",
+  tagline: "Your tagline here",
+  url: "https://yourdomain.com",
+  social: {
+    twitter: "yourhandle",
+    github: "yourusername",
+  },
+};
+```
+
+### Theme Configuration
+
+Edit `tailwind.config.js` to customize your theme:
+
+```javascript
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          DEFAULT: "#2563eb",
+          dark: "#1d4ed8",
+        },
+        // Add your custom colors
+      },
+      fontFamily: {
+        sans: ["var(--font-inter)"],
+        mono: ["var(--font-roboto-mono)"],
+      },
+    },
+  },
+};
+```
+
+## Feature Flags
+
+Enable or disable features in `src/config/features.ts`:
+
+```typescript
+export const features = {
+  darkMode: true,
+  aiAssistant: true,
+  analytics: false,
+  notifications: true,
+};
+```
+
+## Next.js Configuration
+
+Customize Next.js settings in `next.config.js`:
+
+```javascript
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  images: {
+    domains: ["images.unsplash.com"],
+  },
+  experimental: {
+    serverActions: true,
+  },
+};
+
+module.exports = nextConfig;
+```

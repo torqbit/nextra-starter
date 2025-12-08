@@ -4,11 +4,8 @@ import Autoplay from "embla-carousel-autoplay";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 
 const Companies: FC<{
-  items: {
-    firstGroup: React.JSX.Element[];
-    secondGroup: React.JSX.Element[];
-  };
-}> = ({ items }) => {
+  logos: React.JSX.Element[];
+}> = ({ logos }) => {
   const plugin = React.useRef(
     Autoplay({
       delay: 4000,
@@ -16,9 +13,6 @@ const Companies: FC<{
       playOnInit: true,
     })
   );
-
-  const allItems = [...items.firstGroup, ...items.secondGroup];
-  const totalItems = allItems.length;
 
   return (
     <div className='w-full overflow-hidden'>
@@ -36,8 +30,7 @@ const Companies: FC<{
         onMouseEnter={() => plugin.current.stop()}
         onMouseLeave={() => plugin.current.play()}>
         <CarouselContent className='flex'>
-          {allItems.map((item, index) => {
-            const isLastItem = index === totalItems - 1;
+          {logos.map((logo, index) => {
             return (
               <CarouselItem
                 key={index}
@@ -61,7 +54,7 @@ const Companies: FC<{
                         p-2
                       `}
                       aria-hidden='true'>
-                      {item}
+                      {logo}
                     </i>
                   </div>
                 </div>

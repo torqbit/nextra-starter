@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useTheme } from "nextra-theme-docs";
 import { FC } from "react";
 import SvgIcons from "../SvgIcons";
+import { brand } from "@/lib/props";
 
 const Navbar: FC<{}> = () => {
   const { theme, setTheme } = useTheme();
@@ -14,14 +15,8 @@ const Navbar: FC<{}> = () => {
         className='x:mx-auto x:flex x:max-w-(--nextra-content-width) x:items-center x:gap-4 x:justify-between x:pl-[max(env(safe-area-inset-left),1.5rem)] x:pr-[max(env(safe-area-inset-right),1.5rem)] w-full  px-[20px] x:mx-auto '>
         <Link href={"/"}>
           <div className='flex items-center justify-center gap-[8px] h-[60px] text-(--font-primary) '>
-            <Image
-              src={"https://cdn.torqbit.com/static/brand/brand-icon.png"}
-              alt='logo'
-              className='h-auto w-[40px]'
-              height={60}
-              width={60}
-            />
-            <h4 style={{ fontSize: "1.4rem", fontWeight: "600" }}>Torqbit</h4>
+            <Image src={brand.logo} alt='logo' className='h-auto w-[40px]' height={60} width={60} />
+            <h4 style={{ fontSize: "1.4rem", fontWeight: "600" }}>{brand.name}</h4>
           </div>
         </Link>
         <div className='flex items-center justify-center gap-[15px]'>

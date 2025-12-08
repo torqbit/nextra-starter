@@ -29,8 +29,7 @@ export function AnimatedGradientText({
         `animate-gradient inline bg-gradient-to-r from-[var(--color-from)] via-[var(--color-to)] to-[var(--color-from)] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent`,
         className
       )}
-      {...props}
-    >
+      {...props}>
       {children}
     </span>
   );
@@ -38,7 +37,7 @@ export function AnimatedGradientText({
 
 const AnimatedGradientTextView: FC<{ text: string }> = ({ text }) => {
   return (
-    <div className="group relative mx-auto flex items-center justify-center rounded-full px-4 py-1.5 ani  transition-shadow duration-500 ease-out ">
+    <div className='group relative mx-auto flex items-center justify-center rounded-full ani  transition-shadow duration-500 ease-out '>
       <span
         style={{
           WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
@@ -48,8 +47,8 @@ const AnimatedGradientTextView: FC<{ text: string }> = ({ text }) => {
           WebkitClipPath: "padding-box",
         }}
       />
-      <AnimatedGradientText className="">
-        <h1 className="text-inherit " style={{ fontWeight: "bold" }}>
+      <AnimatedGradientText className=''>
+        <h1 className='text-inherit ' style={{ fontWeight: "bold" }}>
           {text}
         </h1>
       </AnimatedGradientText>

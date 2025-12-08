@@ -1,187 +1,14 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { useTheme } from "nextra-theme-docs";
 import { PageSection } from "../ui/page-section";
+import { PricingPlan } from "@/lib/types";
 
-interface PricingPlan {
-  name: string;
-  price: {
-    monthly: string;
-    yearly: string;
-  };
-  credits: {
-    monthly: string;
-    yearly: string;
-  };
-  description: {
-    prefix: string;
-    highlight: string;
-    suffix: string;
-  };
-  features: string[];
-  buttonLabel: string;
-  buttonVariant: "default" | "outline";
-  accentColor: {
-    light: string;
-    dark: string;
-  };
-  highlightColor: {
-    light: string;
-    dark: string;
-  };
-  buttonClasses: {
-    light: string;
-    dark: string;
-  };
-  badge?: {
-    label: string;
-    lightClasses: string;
-    darkClasses: string;
-  };
-}
-
-const Pricing: React.FC = () => {
+const Pricing: React.FC<{ plans: PricingPlan[]; annualDiscount: number }> = ({ plans, annualDiscount }) => {
   const [isYearly, setIsYearly] = useState(false);
-  const { theme } = useTheme();
-  const isDark = theme === "dark";
-
-  console.log(`theme: ${theme} and ${isDark}`);
-
-  const plans: PricingPlan[] = [
-    {
-      name: "Hobby",
-      price: {
-        monthly: "Free",
-        yearly: "Free",
-      },
-      credits: {
-        monthly: "$10 in Credits per month",
-        yearly: "$120 in Credits per year",
-      },
-      description: {
-        prefix: "Everything you need to",
-        highlight: "start",
-        suffix: "automating browsers.",
-      },
-      features: ["100 Browser Hours"],
-      buttonLabel: "Start For Free",
-      buttonVariant: "outline",
-      accentColor: {
-        light: "text-neutral-600",
-        dark: "text-neutral-300",
-      },
-      highlightColor: {
-        light: "text-neutral-900",
-        dark: "text-white",
-      },
-      buttonClasses: {
-        light: "bg-black/100 hover:bg-black/80 hover:text-white text-white",
-        dark: "bg-black/100 text-white hover:text-white hover:bg-black/90",
-      },
-    },
-    {
-      name: "Starter",
-      price: {
-        monthly: "$25",
-        yearly: "$250",
-      },
-      credits: {
-        monthly: "$25 in Credits per month",
-        yearly: "$250 in Credits per year",
-      },
-      description: {
-        prefix: "Everything you need to",
-        highlight: "start",
-        suffix: "automating browsers.",
-      },
-      features: ["290 Browser Hours", "2.9 GB Proxy Bandwidth", "7.2k Captcha Solves"],
-      buttonLabel: "Get Started",
-      buttonVariant: "default",
-      accentColor: {
-        light: "text-emerald-600",
-        dark: "text-emerald-400",
-      },
-      highlightColor: {
-        light: "text-emerald-600",
-        dark: "text-emerald-400",
-      },
-      buttonClasses: {
-        light: "bg-emerald-500 hover:bg-emerald-400 text-white",
-        dark: "bg-emerald-500/90 hover:bg-emerald-500 text-white",
-      },
-    },
-    {
-      name: "Developers",
-      price: {
-        monthly: "$100",
-        yearly: "$1000",
-      },
-      credits: {
-        monthly: "$100 in Credits per month",
-        yearly: "$1000 in Credits per year",
-      },
-      description: {
-        prefix: "Everything you need to",
-        highlight: "launch",
-        suffix: "your project.",
-      },
-      features: ["1,238 Browser Hours", "12 GB Proxy Bandwidth", "28k Captcha Solves"],
-      buttonLabel: "Get Started",
-      buttonVariant: "default",
-      accentColor: {
-        light: "text-sky-600",
-        dark: "text-sky-400",
-      },
-      highlightColor: {
-        light: "text-sky-600",
-        dark: "text-sky-300",
-      },
-      buttonClasses: {
-        light: "bg-sky-600 hover:bg-sky-500 text-white",
-        dark: "bg-sky-500 hover:bg-sky-400 text-white",
-      },
-      badge: {
-        label: "Popular",
-        lightClasses: "bg-sky-100 text-sky-700",
-        darkClasses: "bg-sky-500/20 text-sky-200",
-      },
-    },
-    {
-      name: "Startups",
-      price: {
-        monthly: "$500",
-        yearly: "$5000",
-      },
-      credits: {
-        monthly: "$499 in Credits per month",
-        yearly: "$5,988 in Credits per year",
-      },
-      description: {
-        prefix: "Everything you need to",
-        highlight: "scale",
-        suffix: "your masterpiece.",
-      },
-      features: ["9,980 Browser Hours", "166 GB Proxy Bandwidth", "166k Captcha Solves"],
-      buttonLabel: "Get Started",
-      buttonVariant: "default",
-      accentColor: {
-        light: "text-amber-500",
-        dark: "text-amber-400",
-      },
-      highlightColor: {
-        light: "text-amber-500",
-        dark: "text-amber-300",
-      },
-      buttonClasses: {
-        light: "bg-amber-400 hover:bg-amber-300 text-neutral-900",
-        dark: "bg-amber-400/90 hover:bg-amber-300 text-neutral-900",
-      },
-    },
-  ];
 
   return (
-    <PageSection name='Pricing' description='Simple pricing for everyone.'>
+    <PageSection name='Pricing' description='Simple, transparent pricing for your business needs.'>
       <div className='mt-12 space-y-10'>
         <div className='flex w-full justify-center px-4'>
           <div
@@ -201,7 +28,7 @@ const Pricing: React.FC = () => {
                 <span className='absolute inset-0 -z-10 rounded-full bg-white dark:bg-foreground/10 shadow-[0_10px_30px_rgba(0,0,0,0.25)]' />
               )}
               Yearly
-              <span className='text-emerald-500'>Save 20%</span>
+              <span className='text-emerald-500'>Save {annualDiscount}%</span>
             </button>
             <button
               type='button'
@@ -230,10 +57,7 @@ const Pricing: React.FC = () => {
           )}>
           <div className='grid grid-cols-1 md:grid-cols-4'>
             {plans.map((plan, index) => {
-              const accentClass = isDark ? plan.accentColor.dark : plan.accentColor.light;
-              const highlightClass = isDark ? plan.highlightColor.dark : plan.highlightColor.light;
-              const buttonClass = isDark ? plan.buttonClasses.dark : plan.buttonClasses.light;
-              const badgeClass = plan.badge ? (isDark ? plan.badge.darkClasses : plan.badge.lightClasses) : undefined;
+              const buttonClass = plan.isPopular ? "bg-brand text-white" : "bg-white dark:bg-black/10 text-primary";
 
               return (
                 <div
@@ -250,20 +74,19 @@ const Pricing: React.FC = () => {
                   <div className='space-y-6'>
                     <div className='space-y-2'>
                       <div className='flex items-center justify-between'>
-                        <p className={cn("text-sm font-semibold uppercase tracking-wide", accentClass)}>{plan.name}</p>
-                        {plan.badge && (
-                          <span className={cn("rounded-full px-2.5 py-1 text-xs font-semibold", badgeClass)}>{plan.badge.label}</span>
+                        <p className={cn("text-sm font-semibold uppercase tracking-wide")}>{plan.name}</p>
+                        {plan.isPopular && (
+                          <span className={cn("rounded-full px-2.5 py-1 text-xs font-semibold", buttonClass)}>Popular</span>
                         )}
                       </div>
                       <div>
-                        <h3 className='text-4xl font-semibold text-foreground'>{isYearly ? plan.price.yearly : plan.price.monthly}</h3>
+                        <h3 className='text-4xl font-semibold text-foreground'>
+                          {isYearly ? Math.round(plan.monthlyPrice * (1 - annualDiscount / 100)) : plan.monthlyPrice}/mo
+                        </h3>
                       </div>
                     </div>
 
-                    <p className='text-sm leading-relaxed text-muted-foreground'>
-                      {plan.description.prefix} <span className={cn("font-semibold", highlightClass)}>{plan.description.highlight}</span>{" "}
-                      {plan.description.suffix}
-                    </p>
+                    <p className='text-sm leading-relaxed text-muted-foreground'>{plan.description}</p>
 
                     <div>
                       <ul className='mt-4 space-y-3 text-sm'>

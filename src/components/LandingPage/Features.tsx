@@ -7,19 +7,16 @@ const FeatureCard: FC<{ title: string; icon: ReactNode; description: string; lin
       <i className='leading-[0] text-[25px] rounded-[8px]  p-[8px] flex item-center justify-center bg-(--bg-secondary)'>{icon}</i>
       <div className='text-lg sm:text-xl lg:text-2xl font-medium'>{title}</div>
       <p className='m-0 text-center'>{description}</p>
-      <a style={{ textDecoration: "none" }} href={link} className='text-(--font-secondary) hover:text-(--brand-color)'>
-        {"Learn more >"}
-      </a>
     </div>
   );
 };
-const Features: FC<{ featureList: { title: string; icon: ReactNode; description: string; link: string }[] }> = ({ featureList }) => {
+const Features: FC<{ items: { title: string; icon: ReactNode; description: string; link: string }[] }> = ({ items }) => {
   return (
     <PageSection
       name='Use Cases'
       description='From large-scale scrape jobs to fully autonomous web agents, Steel makes it easy to run browser automations in the cloud.'>
       <div className='relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full'>
-        {featureList.map((props, idx) => {
+        {items.map((props, idx) => {
           const isLastInRow = (idx + 1) % 3 === 0;
           const isLastInSmRow = (idx + 1) % 2 === 0;
           const shouldShowBottomBorder = idx < 3 || (idx >= 3 && idx < 6);

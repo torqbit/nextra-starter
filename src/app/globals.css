@@ -147,6 +147,37 @@
   }
 }
 
+@theme inline {
+  --animate-meteor: meteor 5s linear infinite;
+  --animate-shine: shine var(--duration) infinite linear;
+
+  @keyframes shine {
+    0% {
+      background-position: 0% 0%;
+    }
+    50% {
+      background-position: 100% 100%;
+    }
+    to {
+      background-position: 0% 0%;
+    }
+  }
+
+  @keyframes meteor {
+    0% {
+      transform: rotate(var(--angle)) translateX(0);
+      opacity: 1;
+    }
+    70% {
+      opacity: 1;
+    }
+    100% {
+      transform: rotate(var(--angle)) translateX(-500px);
+      opacity: 0;
+    }
+  }
+}
+
 .landing-page body {
   /* background-color: var(--bg-secondary); */
   color: var(--font-secondary);
@@ -154,6 +185,9 @@
 .landing-page button {
   cursor: pointer;
   border: 1px solid transparent;
+}
+.bg-brand {
+  background-color: var(--brand-color);
 }
 
 button {

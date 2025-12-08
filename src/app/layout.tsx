@@ -4,17 +4,18 @@ import { getPageMap } from "nextra/page-map";
 import "../app/globals.css";
 import Image from "next/image";
 import { Metadata } from "next";
+import { brand } from "@/lib/props";
 
 export const metadata: Metadata = {
-  title: "Torqbit Docs",
-  description: "Documentation with Torqbit",
+  title: brand.name,
+  description: brand.tagline,
 };
 
 const footer = (
   <Footer className='flex item-center gap-[10px]'>
     <div className='flex item-center gap-[8px]'>
-      <Image src={"https://cdn.torqbit.com/static/brand/brand-icon.png"} alt='logo' className='h-auto w-[40px]' height={40} width={40} />
-      <h4 style={{ margin: 0, padding: 0, lineHeight: 1.9 }}>Torqbit</h4>
+      <Image src={brand.logo} alt='logo' className='h-auto w-[40px]' height={40} width={40} />
+      <h4 style={{ margin: 0, padding: 0, lineHeight: 1.9 }}>{brand.name}</h4>
     </div>
   </Footer>
 );
@@ -49,14 +50,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               className='w-full justify-between px-[20px] x:mx-auto '
               logo={
                 <div className='flex item-center gap-[8px]'>
-                  <Image
-                    src={"https://cdn.torqbit.com/static/brand/brand-icon.png"}
-                    alt='logo'
-                    className='h-auto w-[40px]'
-                    height={40}
-                    width={40}
-                  />
-                  <h4 style={{ fontSize: "1.4rem", fontWeight: "600" }}>Torqbit</h4>
+                  <Image src={brand.logo} alt='logo' className='h-auto w-[40px]' height={40} width={40} />
+                  <h4 style={{ fontSize: "1.4rem", fontWeight: "600" }}>{brand.name}</h4>
                 </div>
               }
             />

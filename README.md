@@ -1,36 +1,137 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI SaaS Website Template
 
-## Getting Started
+A modern, responsive, and feature-rich Next.js template for AI-powered SaaS applications. This template includes a beautiful landing page, documentation, and AI assistant integration, all with dark/light theme support.
 
-First, run the development server:
+![Light Theme](/screenshots/light.png#gh-light-mode-only)
+![Dark Theme](/screenshots/dark.png#gh-dark-mode-only)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## ✨ Features
+
+- 🚀 **Next.js 16** with App Router
+- 📚 **Nextra v4** for beautiful documentation
+- 🤖 **AI Assistant** powered by Torqbit
+- 🌓 **Dark/Light** theme support
+- 📱 **Fully responsive** design
+- ⚡ **Optimized** for performance
+- 🎨 **Customizable** components
+- 🔍 **SEO** optimized
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 16
+- **Documentation**: Nextra v4
+- **Styling**: Tailwind CSS
+- **UI Components**: Shadcn/ui
+- **Icons**: Hero Icons
+- **Theming**: next-themes
+- **Type Safety**: TypeScript
+- **AI Integration**: Torqbit
+
+## 🚀 Quick Start
+
+1. **Clone the repository**
+   ```bash
+   git clone [https://github.com/yourusername/ai-saas-template.git](https://github.com/yourusername/ai-saas-template.git)
+   cd ai-saas-template
+   ```
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+3. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+4. **Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.**
+
+## 🎨 Customization
+
+### Branding
+
+Update the brand information in src/lib/props.ts:
+
+```typescript
+export const brand = {
+  logo: "/logo.png", // Replace with your logo
+  name: "Your Brand",
+  tagline: "Your tagline here",
+};
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Theme Colors
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Customize the theme colors in tailwind.config.js:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```javascript
+theme: {
+  extend: {
+    colors: {
+      brand: {
+        DEFAULT: '#000000',  // Your brand color
+      },
+    },
+  },
+}
+```
 
-## Learn More
+### Pricing Plans
 
-To learn more about Next.js, take a look at the following resources:
+Update the pricing plans in src/lib/props.ts:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```typescript
+export const PricingProps = {
+  annualDiscount: 20,
+  plans: [
+    {
+      name: "Starter",
+      monthlyPrice: 25,
+      description: "Perfect for small businesses",
+      features: ["1 AI assistant", "1,000 messages", "Basic features"],
+      buttonLabel: "Get Started",
+      buttonVariant: "outline",
+      isPopular: false,
+    },
+    // Add more plans as needed
+  ],
+};
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📝 Documentation
 
-## Deploy on Vercel
+The documentation is built using Nextra v4, a modern static site generator for Next.js. You can find the documentation in the `docs` directory.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+To add new pages to the documentation,
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Create a new .mdx or .md file in the docs directory
+2. Update the navigation in theme.config.tsx
+
+## ![alt text](toq-32.png) AI Assistant
+
+The AI assistant is integrated using Torqbit. To set it up:
+
+1. Sign up for a Torqbit API key
+2. Add the API key to your environment variables:
+   ```bash
+   NEXT_PUBLIC_TORQBIT_API_KEY=your_api_key_here
+   ```
+
+## 📄 License
+
+MIT
+
+## 📝 Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request.
+
+```
+
+Would you like me to make any adjustments to this README? I can:
+
+1. Add more specific setup instructions
+2. Include additional customization options
+3. Add more details about specific features
+4. Include a contributors section
+5. Add a FAQ section
+
+Let me know what you'd like to modify or add!
+```

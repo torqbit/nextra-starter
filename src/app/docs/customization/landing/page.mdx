@@ -1,0 +1,189 @@
+---
+title: Landing Page
+---
+
+# Landing Page Customization
+
+Customize your SaaS website's landing page to reflect your brand's message and value proposition.
+
+## Logo and Favicon
+
+### Adding Your Logo
+
+1. Place your logo in the `public/` directory
+2. Update the logo path in `src/lib/props.tsx`:
+
+```typescript
+export const brand = {
+  logo: "/your-logo.png", // Update this path
+};
+```
+
+### Updating the Favicon
+
+1. Replace the following files in `public/`:
+   - `favicon.ico`
+   - `favicon-16x16.png`
+   - `favicon-32x32.png`
+   - `apple-touch-icon.png`
+   - `safari-pinned-tab.svg`
+
+## Customize Landing Page
+
+Update the landing page design in `src/app/page.tsx` to reflect your brand's message and value proposition.
+
+### Key Sections to Customize
+
+- Hero section with your value proposition
+- Features section highlighting your product benefits
+- Call-to-action buttons
+- Footer with navigation and social links
+
+### Hero Section
+
+The hero section is the first thing visitors see on your landing page. Customize it in `src/lib/props.tsx` under the `HeroProps` object:
+
+```typescript
+export const HeroProps = {
+  // Notification banner at the top of the hero
+  notification: {
+    tag: "New", // Update the tag text (e.g., "Beta", "Now Live")
+    description: "Introducing AI Agent SDK", // Update the notification message
+  },
+
+  // Main heading of your hero section
+  title: "All-in-One AI Automation Engine", // Your main value proposition
+
+  // Subheading text
+  description: "Automate customer engagement, support, sales, and internal workflows with a single unified AI engine.",
+
+  // Primary call-to-action button
+  btnGetStarted: {
+    text: "Get Started", // Button text
+    link: "/get-started", // Link for the button
+  },
+
+  // Secondary call-to-action button
+  btnBookDemo: {
+    text: "Book a Demo", // Button text
+    link: "/demo", // Link for the demo booking
+  },
+
+  // Hero image or illustration
+  extraContent: <img src='img/hero-image.png' alt='Product screenshot' />, // Replace with your hero image
+
+  // Trust indicator text below the CTA
+  extraDescription: "Powering the world's leading companies with AI automation.",
+};
+```
+
+#### Customization Tips:
+
+1. **Notification Banner**:
+
+   - Use for announcements, new features, or special offers
+   - Set to `null` to hide the notification banner
+
+2. **Main Headline**:
+
+   - Keep it clear and benefit-focused
+   - Ideally under 10 words
+
+3. **Subheading**:
+
+   - Expand on your value proposition
+   - Keep it concise (1-2 sentences)
+
+4. **Call-to-Action Buttons**:
+
+   - Primary button should be your main conversion goal (e.g., "Get Started")
+   - Secondary button for alternative actions (e.g., "View Demo")
+   - Update the links to point to the appropriate routes
+
+5. **Hero Image/Illustration**:
+
+   - Recommended size: 1200x800px
+   - Use high-quality, relevant images
+   - Can be replaced with a custom React component for more complex layouts
+
+6. **Trust Indicator**:
+   - Add social proof or key benefits
+   - Keep it short and impactful
+
+### Features Section
+
+The features section highlights your product's key benefits. Customize it in `src/lib/props.tsx` under the `FeaturesProps` object:
+
+```typescript
+export const FeaturesProps = {
+  title: "Powerful AI Features", // Section heading
+  description: "Everything you need to automate and scale your business with AI.", // Section subheading
+  features: [
+    {
+      title: "Conversational AI", // Feature title
+      icon: <MessageCircleIcon className='w-6 h-6' />, // Feature icon
+      description: "Natural language processing for seamless customer interactions.", // Feature description
+      link: "/", // Link for more info (optional)
+    },
+    // Add more features as needed
+  ],
+};
+```
+
+#### Customization Tips:
+
+1. **Section Heading**:
+
+   - Update the `title` to reflect your product's main value proposition
+   - Keep it concise and benefit-focused
+
+2. **Section Subheading**:
+
+   - Update the `description` to provide context about what users will find in the features
+   - Keep it short and engaging
+
+3. **Feature Items**:
+   - Add as many features as needed for your product
+   - Each feature should have a clear title, descriptive text, and an optional link
+   - Use appropriate icons from the available icon set
+
+### Pricing Section
+
+The pricing section displays your subscription options. Customize it in `src/lib/props.tsx` under the `PricingProps` object:
+
+```typescript
+export const PricingProps = {
+  title: "Simple, transparent pricing", // Section heading
+  description: "Choose the plan that works best for you.", // Section subheading
+  plans: [
+    {
+      name: "Starter", // Plan name
+      price: "$19", // Price
+      period: "/month", // Billing period
+      description: "Perfect for individuals getting started.", // Plan description
+      features: ["Up to 5 projects", "Basic analytics", "Email support"], // Plan features
+      ctaText: "Get Started", // Call-to-action text
+      ctaLink: "/signup", // Call-to-action link
+      popular: false, // Mark as popular plan (optional)
+    },
+    // Add more plans as needed
+  ],
+};
+```
+
+#### Customization Tips:
+
+1. **Section Heading**:
+
+   - Update the `title` to reflect your pricing strategy
+   - Keep it clear and value-focused
+
+2. **Section Subheading**:
+
+   - Update the `description` to provide context about your pricing tiers
+   - Keep it concise and informative
+
+3. **Pricing Plans**:
+   - Add as many plans as needed for your product
+   - Each plan should have a clear name, price, billing period, and feature list
+   - Use the `popular` flag to highlight your most recommended plan

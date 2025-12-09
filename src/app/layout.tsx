@@ -35,8 +35,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         {/* Your additional tags should be passed as `children` of `<Head>` element */}
         <script
           defer
-          src='https://cdn.torqbit.com/static/js/toq.local.js'
-          data-agentId='cmiea9c1r000gcv4e316fyeh7'
+          src='https://cdn.torqbit.com/static/js/toq.prod.js'
+          data-agentId={process.env.NEXT_PUBLIC_TORQBIT_API_KEY}
           data-position='bottom-right'></script>
       </Head>
       <body>

@@ -6,5 +6,18 @@ export default {
   docs: {
     type: "page",
     title: "Documentation",
+    items: {
+      "getting-started": {
+        title: "Getting Started",
+        items: {
+          installation: {
+            title: "Installation",
+          },
+          configuration: {
+            title: "Configuration",
+          },
+        },
+      },
+    },
   },
 };

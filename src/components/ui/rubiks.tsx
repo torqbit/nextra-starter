@@ -40,16 +40,34 @@ const RubiksCube = () => {
     const scene = new THREE.Scene();
     sceneRef.current = scene;
 
-    // Create camera
-    const camera = new THREE.PerspectiveCamera(50, mountRef.current.clientWidth / mountRef.current.clientHeight, 0.1, 1000);
-    camera.position.set(8, 8, 12);
+    // Create camera with adjusted settings for larger cube
+    const camera = new THREE.PerspectiveCamera(35, mountRef.current.clientWidth / mountRef.current.clientHeight, 0.1, 1000);
+    camera.position.set(4, 4, 8);
     camera.lookAt(0, 0, 0);
     cameraRef.current = camera;
 
     // Create renderer
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    renderer.setSize(mountRef.current.clientWidth, mountRef.current.clientHeight);
-    renderer.setPixelRatio(window.devicePixelRatio);
+    const renderer = new THREE.WebGLRenderer({
+      antialias: true,
+      alpha: true,
+      powerPreference: "high-performance",
+    });
+
+    const updateRendererSize = () => {
+      if (!mountRef.current) return;
+      const width = mountRef.current.clientWidth;
+      const height = mountRef.current.clientHeight;
+
+      renderer.setSize(width, height);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Cap pixel ratio for performance
+
+      if (cameraRef.current) {
+        cameraRef.current.aspect = width / height;
+        cameraRef.current.updateProjectionMatrix();
+      }
+    };
+
+    updateRendererSize();
     mountRef.current.appendChild(renderer.domElement);
     rendererRef.current = renderer;
 
@@ -188,9 +206,7 @@ const RubiksCube = () => {
     // Handle window resize
     const handleResize = () => {
       if (!mountRef.current) return;
-      camera.aspect = mountRef.current.clientWidth / mountRef.current.clientHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(mountRef.current.clientWidth, mountRef.current.clientHeight);
+      updateRendererSize();
     };
 
     window.addEventListener("resize", handleResize);
@@ -202,8 +218,8 @@ const RubiksCube = () => {
       animationRef.current.time += 0.01;
       const time = animationRef.current.time;
 
-      // Smooth floating motion
-      rubiksCube.position.y = Math.sin(time * 0.5) * 0.3;
+      // Smooth floating motion with reduced movement
+      rubiksCube.position.y = Math.sin(time * 0.3) * 0.2;
 
       const { isHovering } = mouseRef.current;
       const { rimLight, fillLight } = lightsRef.current;

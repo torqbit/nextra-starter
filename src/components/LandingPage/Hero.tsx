@@ -9,7 +9,7 @@ import dynamic from "next/dynamic";
 
 const RubiksCube = dynamic(() => import("../ui/rubiks"), {
   ssr: false,
-  loading: () => <div>Loading 3D Cube...</div>,
+  loading: () => <div></div>,
 });
 
 const Hero: FC<{

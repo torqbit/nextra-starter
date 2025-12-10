@@ -14,7 +14,7 @@ const Pricing: React.FC<{ plans: PricingPlan[]; annualDiscount: number }> = ({ p
           <div
             className={cn(
               "relative flex items-center gap-3 rounded-full border px-2 py-2 backdrop-blur-sm",
-              "border-border/40 bg-gray-100 dark:bg-black/80",
+              "border-border/40 bg-gray-200 dark:bg-black/80",
               "shadow-[inset_0_0_0_1px_rgba(0,0,0,0.02)] dark:shadow-[inset_0_0_0_1px_rgba(255,255,255,0.04)]"
             )}>
             <button

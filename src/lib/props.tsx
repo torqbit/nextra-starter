@@ -52,13 +52,13 @@ export const CompanyProps = {
 export const FeatureItems = {
   items: [
     {
-      title: "Customer Support Automation",
+      title: "Customer Support",
       icon: <ShieldCheckIcon className='w-6 h-6' />,
       description: "Reduce resolution times by 80% while improving accuracy with AI trained on your product.",
       link: "/",
     },
     {
-      title: "AI Sales & Lead Qualification",
+      title: "Sales & Lead Qualification",
       icon: <FunnelIcon className='w-6 h-6' />,
       description: "AI learns your ICP, qualifies leads automatically, and schedules meetings.",
       link: "/",
@@ -76,7 +76,7 @@ export const FeatureItems = {
       link: "/",
     },
     {
-      title: "Internal Operations Automation",
+      title: "Operations Automation",
       icon: <BriefcaseIcon className='w-6 h-6' />,
       description: "Handle employee requests, knowledge retrieval, HR queries, and IT support.",
       link: "/",

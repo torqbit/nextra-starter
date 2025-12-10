@@ -5,6 +5,12 @@ import { FC, ReactNode } from "react";
 import { ShineBorder } from "../ui/shiny-border";
 import { useTheme } from "next-themes";
 import { Button } from "../ui/button";
+import dynamic from "next/dynamic";
+
+const RubiksCube = dynamic(() => import("../ui/rubiks"), {
+  ssr: false,
+  loading: () => <div>Loading 3D Cube...</div>,
+});
 
 const Hero: FC<{
   notification?: {
@@ -62,7 +68,9 @@ const Hero: FC<{
           <p className='text-sm sm:text-base text-gray-600 dark:text-gray-400 w-full'>{extraDescription}</p>
         )}
       </div>
-      <div className='w-full lg:w-1/2 mt-8 lg:mt-0 lg:pl-8 xl:pl-12'>{extraContent}</div>
+      <div className='w-full lg:w-1/2 mt-8 lg:mt-0 lg:pl-8 xl:pl-12'>
+        <RubiksCube />
+      </div>
     </section>
   );
 };

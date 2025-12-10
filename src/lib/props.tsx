@@ -50,6 +50,8 @@ export const CompanyProps = {
 };
 
 export const FeatureItems = {
+  title: "Use Cases",
+  description: "From large-scale scrape jobs to fully autonomous web agents, Steel makes it easy to run browser automations in the cloud.",
   items: [
     {
       title: "Customer Support",

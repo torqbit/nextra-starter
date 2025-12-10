@@ -10,11 +10,13 @@ const FeatureCard: FC<{ title: string; icon: ReactNode; description: string; lin
     </div>
   );
 };
-const Features: FC<{ items: { title: string; icon: ReactNode; description: string; link: string }[] }> = ({ items }) => {
+const Features: FC<{
+  title: string;
+  description: string;
+  items: { title: string; icon: ReactNode; description: string; link: string }[];
+}> = ({ title, description, items }) => {
   return (
-    <PageSection
-      name='Use Cases'
-      description='From large-scale scrape jobs to fully autonomous web agents, Steel makes it easy to run browser automations in the cloud.'>
+    <PageSection name={title} description={description}>
       <div className='relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 w-full'>
         {items.map((props, idx) => {
           const isLastInRow = (idx + 1) % 3 === 0;

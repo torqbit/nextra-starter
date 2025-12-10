@@ -47,11 +47,7 @@ const RubiksCube = () => {
     cameraRef.current = camera;
 
     // Create renderer
-    const renderer = new THREE.WebGLRenderer({
-      antialias: true,
-      alpha: true,
-      powerPreference: "high-performance",
-    });
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 
     const updateRendererSize = () => {
       if (!mountRef.current) return;
@@ -71,24 +67,24 @@ const RubiksCube = () => {
     mountRef.current.appendChild(renderer.domElement);
     rendererRef.current = renderer;
 
-    // Enhanced lighting setup
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+    // Enhanced lighting for better vibrancy
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
     scene.add(ambientLight);
 
-    const keyLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    const keyLight = new THREE.DirectionalLight(0xffffff, 1.2);
     keyLight.position.set(10, 10, 10);
     scene.add(keyLight);
 
-    const fillLight = new THREE.DirectionalLight(0xffaa66, 0.4);
+    const fillLight = new THREE.DirectionalLight(0xffcc88, 0.7);
     fillLight.position.set(-10, 5, -5);
     scene.add(fillLight);
     lightsRef.current.fillLight = fillLight;
 
-    const backLight = new THREE.DirectionalLight(0xff6699, 0.3);
+    const backLight = new THREE.DirectionalLight(0xff77aa, 0.5);
     backLight.position.set(0, -5, -10);
     scene.add(backLight);
 
-    const rimLight = new THREE.PointLight(0xcc88ff, 0.5);
+    const rimLight = new THREE.PointLight(0xdd99ff, 0.8, 20);
     rimLight.position.set(-5, 5, -5);
     scene.add(rimLight);
     lightsRef.current.rimLight = rimLight;
@@ -113,14 +109,14 @@ const RubiksCube = () => {
       return new THREE.CanvasTexture(canvas);
     };
 
-    // Create gradient textures for each face
+    // Create gradient textures with brighter orange-to-purple theme
     const gradients = {
-      peachOrange: createGradientTexture("#ffd4a3", "#ffaa66", "#ff8844"),
-      orangePink: createGradientTexture("#ffaa66", "#ff6699", "#ff4477"),
-      pinkPurple: createGradientTexture("#ff6699", "#cc88ff", "#aa66ff"),
-      purpleMagenta: createGradientTexture("#cc88ff", "#dd77ff", "#ff66cc"),
-      coralPeach: createGradientTexture("#ff9977", "#ffbb88", "#ffd4a3"),
-      lavenderPurple: createGradientTexture("#dd99ff", "#bb88ff", "#9966ff"),
+      peachOrange: createGradientTexture("#ff9e5e", "#ff7b35", "#ff5a1c"),
+      orangePink: createGradientTexture("#ff7b35", "#ff4a8a", "#ff2f94"),
+      pinkPurple: createGradientTexture("#ff4a8a", "#d84dff", "#b82be2"),
+      purpleMagenta: createGradientTexture("#d84dff", "#c04dff", "#a82bff"),
+      coralPeach: createGradientTexture("#ff9e5e", "#ffb07a", "#ffc296"),
+      lavenderPurple: createGradientTexture("#d84dff", "#c23dff", "#a82bff"),
     };
 
     // Create Rubik's Cube group
@@ -143,38 +139,56 @@ const RubiksCube = () => {
             new THREE.MeshStandardMaterial({
               map: x === 1 ? gradients.peachOrange : null,
               color: x === 1 ? 0xffffff : 0x1a1a1a,
-              metalness: 0.2,
-              roughness: 0.3,
+              metalness: 0.05,
+              roughness: 0.15,
+              emissive: x === 1 ? 0xff7b35 : 0x000000,
+              emissiveIntensity: x === 1 ? 0.35 : 0,
+              toneMapped: false,
             }),
             new THREE.MeshStandardMaterial({
               map: x === -1 ? gradients.orangePink : null,
               color: x === -1 ? 0xffffff : 0x1a1a1a,
-              metalness: 0.2,
-              roughness: 0.3,
+              metalness: 0.05,
+              roughness: 0.15,
+              emissive: x === -1 ? 0xff4a8a : 0x000000,
+              emissiveIntensity: x === -1 ? 0.35 : 0,
+              toneMapped: false,
             }),
             new THREE.MeshStandardMaterial({
               map: y === 1 ? gradients.coralPeach : null,
               color: y === 1 ? 0xffffff : 0x1a1a1a,
-              metalness: 0.2,
-              roughness: 0.3,
+              metalness: 0.05,
+              roughness: 0.15,
+              emissive: y === 1 ? 0xffb07a : 0x000000,
+              emissiveIntensity: y === 1 ? 0.35 : 0,
+              toneMapped: false,
             }),
             new THREE.MeshStandardMaterial({
               map: y === -1 ? gradients.pinkPurple : null,
               color: y === -1 ? 0xffffff : 0x1a1a1a,
-              metalness: 0.2,
-              roughness: 0.3,
+              metalness: 0.05,
+              roughness: 0.15,
+              emissive: y === -1 ? 0xd84dff : 0x000000,
+              emissiveIntensity: y === -1 ? 0.35 : 0,
+              toneMapped: false,
             }),
             new THREE.MeshStandardMaterial({
               map: z === 1 ? gradients.purpleMagenta : null,
               color: z === 1 ? 0xffffff : 0x1a1a1a,
-              metalness: 0.2,
-              roughness: 0.3,
+              metalness: 0.05,
+              roughness: 0.15,
+              emissive: z === 1 ? 0xc04dff : 0x000000,
+              emissiveIntensity: z === 1 ? 0.4 : 0,
+              toneMapped: false,
             }),
             new THREE.MeshStandardMaterial({
               map: z === -1 ? gradients.lavenderPurple : null,
               color: z === -1 ? 0xffffff : 0x1a1a1a,
-              metalness: 0.2,
-              roughness: 0.3,
+              metalness: 0.05,
+              roughness: 0.15,
+              emissive: z === -1 ? 0xc23dff : 0x000000,
+              emissiveIntensity: z === -1 ? 0.45 : 0,
+              toneMapped: false,
             }),
           ];
 
@@ -218,8 +232,8 @@ const RubiksCube = () => {
       animationRef.current.time += 0.01;
       const time = animationRef.current.time;
 
-      // Smooth floating motion with reduced movement
-      rubiksCube.position.y = Math.sin(time * 0.3) * 0.2;
+      // Smooth floating motion
+      rubiksCube.position.y = Math.sin(time * 0.5) * 0.3;
 
       const { isHovering } = mouseRef.current;
       const { rimLight, fillLight } = lightsRef.current;
@@ -230,23 +244,25 @@ const RubiksCube = () => {
       if (isHovering) {
         animationRef.current.targetRotationSpeed = 0.025;
 
+        // Interactive rotation based on mouse position
         rubiksCube.rotation.y += mouseRef.current.x * 0.015;
         rubiksCube.rotation.x += mouseRef.current.y * 0.015;
 
+        // Enhance lighting on hover
         rimLight.intensity += (1.2 - rimLight.intensity) * 0.1;
         fillLight.intensity += (0.7 - fillLight.intensity) * 0.1;
 
+        // Move rim light with mouse
         rimLight.position.x = mouseRef.current.x * 10;
         rimLight.position.y = mouseRef.current.y * 10;
-
-        const scale = 1 + Math.sin(time * 3) * 0.02;
-        rubiksCube.scale.set(scale, scale, scale);
       } else {
         animationRef.current.targetRotationSpeed = 0.01;
 
+        // Reset lighting when not hovering
         rimLight.intensity += (0.5 - rimLight.intensity) * 0.05;
         fillLight.intensity += (0.4 - fillLight.intensity) * 0.05;
 
+        // Reset rim light position
         rimLight.position.x += (-5 - rimLight.position.x) * 0.05;
         rimLight.position.y += (5 - rimLight.position.y) * 0.05;
 

@@ -68,9 +68,8 @@ const Hero: FC<{
           <p className='text-sm sm:text-base text-gray-600 dark:text-gray-400 w-full'>{extraDescription}</p>
         )}
       </div>
-      <div className='w-full lg:w-1/2 mt-8 lg:mt-0 lg:pl-8 xl:pl-12'>
-        <RubiksCube />
-      </div>
+
+      <RubiksCube />
     </section>
   );
 };

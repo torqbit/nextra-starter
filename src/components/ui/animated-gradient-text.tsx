@@ -48,7 +48,7 @@ const AnimatedGradientTextView: FC<{ text: string }> = ({ text }) => {
         }}
       />
       <AnimatedGradientText className=''>
-        <h1 className='text-inherit ' style={{ fontWeight: "bold" }}>
+        <h1 className='text-3xl sm:text-4xl' style={{ fontWeight: "bold" }}>
           {text}
         </h1>
       </AnimatedGradientText>

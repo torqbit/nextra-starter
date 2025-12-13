@@ -1,6 +1,6 @@
-# AI SaaS Website Template
+# Nextjs Website Template
 
-A modern, responsive, and feature-rich Next.js template for AI-powered SaaS applications. This template includes a beautiful landing page, documentation, and AI assistant integration, all with dark/light theme support.
+A modern, responsive, and feature-rich Next.js marketing website template for AI-powered SaaS applications. This template includes a beautiful landing page, documentation, and AI assistant integration, all with dark/light theme support.
 
 ![Light Theme](/screenshots/light.png#gh-light-mode-only)
 ![Dark Theme](/screenshots/dark.png#gh-dark-mode-only)
